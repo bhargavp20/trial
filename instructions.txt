@@ -1,0 +1,137 @@
+(base) web3@web3-VirtualBox:~$ cd Bhargav
+(base) web3@web3-VirtualBox:~/Bhargav$ mkdir trial
+(base) web3@web3-VirtualBox:~/Bhargav$ cd trial
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git init
+Initialized empty Git repository in /home/web3/Bhargav/trial/.git/
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git config --list
+user.name=umeshthakur16-dev
+user.email=umeshthakur6716@gmail.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git config --global user.name "bhargavp20"
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git config --global user.email "bhargav.p202314@gmail.com"
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git config --list
+user.name=bhargavp20
+user.email=bhargav.p202314@gmail.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ echo "hello git">>file1.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ cat file1.txt
+hello git
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git add file1.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git commit -m "my 1st commit"
+[master (root-commit) 8550222] my 1st commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ echo "hello bit">>file2.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ cat file2.txt
+hello bit
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git add file2.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git commit -m "my 2nd commit"
+[master 4cd145c] my 2nd commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git log --oneline
+4cd145c (HEAD -> master) my 2nd commit
+8550222 my 1st commit
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git tag v1.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git tag
+v1.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git tag v1.0 4cd145c
+fatal: tag 'v1.0' already exists
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git tag v2.0 4cd145c
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git show v1.0
+commit 4cd145c44f5a4298d1394dd0cb65d70239c060f9 (HEAD -> master, tag: v2.0, tag: v1.0)
+Author: bhargavp20 <bhargav.p202314@gmail.com>
+Date:   Wed Nov 4 09:11:42 2026 +0530
+
+    my 2nd commit
+
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..8ac9f9c
+--- /dev/null
++++ b/file2.txt
+@@ -0,0 +1 @@
++hello bit
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git show v2.0
+commit 4cd145c44f5a4298d1394dd0cb65d70239c060f9 (HEAD -> master, tag: v2.0, tag: v1.0)
+Author: bhargavp20 <bhargav.p202314@gmail.com>
+Date:   Wed Nov 4 09:11:42 2026 +0530
+
+    my 2nd commit
+
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..8ac9f9c
+--- /dev/null
++++ b/file2.txt
+@@ -0,0 +1 @@
++hello bit
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git remote add origin https://github.com/bhargavp20/trial.git
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git branch -M main
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git push -u origin main
+Username for 'https://github.com': bhargavp20
+Password for 'https://bhargavp20@github.com': 
+
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (6/6), 470 bytes | 470.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/bhargavp20/trial.git
+ * [new branch]      main -> main
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-remote --tags origin
+
+
+
+^C
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-remote --tags origin
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-remote --tags origin | grep v2.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git push origin v2.0
+Username for 'https://github.com': bhargavp20
+Password for 'https://bhargavp20@github.com': 
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/bhargavp20/trial.git
+ * [new tag]         v2.0 -> v2.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-remote --tags origin
+4cd145c44f5a4298d1394dd0cb65d70239c060f9	refs/tags/v2.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-remote --tags origin | grep v2.0
+4cd145c44f5a4298d1394dd0cb65d70239c060f9	refs/tags/v2.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git fetch --tags
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git show v2.0
+commit 4cd145c44f5a4298d1394dd0cb65d70239c060f9 (HEAD -> main, tag: v2.0, tag: v1.0, origin/main)
+Author: bhargavp20 <bhargav.p202314@gmail.com>
+Date:   Wed Nov 4 09:11:42 2026 +0530
+
+    my 2nd commit
+
+diff --git a/file2.txt b/file2.txt
+new file mode 100644
+index 0000000..8ac9f9c
+--- /dev/null
++++ b/file2.txt
+@@ -0,0 +1 @@
++hello bit
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-tree -r --name-only v1
+fatal: Not a valid object name v1
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-tree -r --name-only v1.0
+file1.txt
+file2.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git ls-tree -r --name-only v2.0
+file1.txt
+file2.txt
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ git push origin v1.0
+Username for 'https://github.com': bhargavp20
+Password for 'https://bhargavp20@github.com': 
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/bhargavp20/trial.git
+ * [new tag]         v1.0 -> v1.0
+(base) web3@web3-VirtualBox:~/Bhargav/trial$ 
